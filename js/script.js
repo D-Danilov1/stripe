@@ -91,8 +91,8 @@ async function handleSubmit(e) {
 		price,
 	}
 
-	if (!isValidForm()) return
-	setDefaultForm()
+	// if (!isValidForm()) return
+	// setDefaultForm()
 	console.log(months)
 
 	const responsePrice = {
@@ -149,7 +149,11 @@ async function handleSubmit(e) {
 		})
 		.then(response => response.json())
 		.then(data => {
-			window.location.href = `subscribe.html?clientSecret=${data.clientSecret}&subscriptionId=${data.subscriptionId}`
+			window.location.href = `subscribe.html?clientSecret=${
+				data.clientSecret
+			}&subscriptionId=${
+				data.subscriptionId
+			}&email=${email}&period=${months}&amount=${price * 100}`
 		})
 		.catch(error => {
 			console.error(error)
