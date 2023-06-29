@@ -50,7 +50,7 @@ const Subscribe = (): JSX.Element => {
 		const { error } = await stripe.confirmPayment({
 			elements: stripeElements,
 			confirmParams: {
-				return_url: `http://localhost:3000/success?payment_intent_client_secret=${query.clientSecret}&email=${query.email}&period=${query.months}&amount=${query.amount}`,
+				return_url: `http://localhost:3000/success?secret=${query.clientSecret}&email=${query.email}&period=${query.period}&amount=${query.amount}`,
 			},
 		})
 
