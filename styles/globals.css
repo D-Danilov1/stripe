@@ -152,7 +152,11 @@ table {
 body {
 	font-family: 'Raleway', sans-serif;
 	background-color: #1c2626;
+	color: black !important;
 	overflow-x: hidden;
+}
+p {
+	color: black !important
 }
 .container {
 	width: 500px;
