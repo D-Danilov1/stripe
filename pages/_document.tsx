@@ -10,6 +10,10 @@ export default function Document() {
 				property='og:image'
 				content='https://static.tildacdn.com/tild3930-3433-4337-b739-656330633965/voitenko-background2.jpg'
 			/>
+			<meta
+				httpEquiv='Content-Security-Policy'
+				content='upgrade-insecure-requests'
+			/>
 			<link rel='canonical' href='https://nextworkoutapp.com' />
 			<meta name='format-detection' content='telephone=no' />
 			<meta httpEquiv='x-dns-prefetch-control' content='on' />
