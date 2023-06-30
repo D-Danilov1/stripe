@@ -10,8 +10,6 @@ const Modal = ({ modalVisible, setModalVisible }: any) => {
 		name,
 		email,
 		number,
-		monthsElementRef,
-		priceElementRef,
 		userNameRef,
 		userEmailRef,
 		userNumberRef,
@@ -59,16 +57,12 @@ const Modal = ({ modalVisible, setModalVisible }: any) => {
 						<div onClick={handleMinusClick}>
 							<MinusSvg />
 						</div>
-						<p id='months' ref={monthsElementRef}>
-							{months} mon.
-						</p>
+						<p id='months'>{months} mon.</p>
 						<div onClick={() => handlePlusClick()}>
 							<PlusSvg />
 						</div>
 					</div>
-					<p className='price' ref={priceElementRef}>
-						{price}$
-					</p>
+					<p className='price'>{price}$</p>
 				</div>
 				<p className='modal__text'>Fill in all fields and proceed to payment</p>
 				<form onSubmit={handleSubmit}>

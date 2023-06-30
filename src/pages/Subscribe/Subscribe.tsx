@@ -60,9 +60,13 @@ const Subscribe = (): JSX.Element => {
 	}
 
 	return (
-		<div className='container'>
+		<div className={styles.container}>
 			<form id='payment-form' onSubmit={handleSubmit}>
-				<div ref={paymentElementRef} id='payment-element'></div>
+				<div
+					ref={paymentElementRef}
+					id='payment-element'
+					className={styles.form}
+				></div>
 				<button id='submit' className={styles.btn} type='submit'>
 					Subscribe
 				</button>

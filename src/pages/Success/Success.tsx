@@ -7,7 +7,7 @@ import {
 	fetchFindOrCreateUser,
 } from '@/src/sevices/fetchForm'
 import { useRouter } from 'next/router'
-import { Stripe, loadStripe } from '@stripe/stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
 
 const stripePromise = loadStripe(process.env.PUBLIC_KEY || '')
 
@@ -58,8 +58,7 @@ const Success = () => {
 						end_of: calculateEndDate(new Date(), period),
 					}
 
-					const subscription = await fetchCreateSubscribe(subscriptionObj)
-					console.log(subscription)
+					await fetchCreateSubscribe(subscriptionObj)
 				} else {
 					console.log('Payment failed')
 				}

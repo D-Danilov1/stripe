@@ -14,24 +14,16 @@ const useHome = () => {
 	const [email, setEmail] = useState<string>('')
 	const [number, setNumber] = useState<string>('')
 
-	const monthsElementRef = useRef<any>(null)
-	const priceElementRef = useRef<any>(null)
 	const userNameRef = useRef<any>(null)
 	const userEmailRef = useRef<any>(null)
 	const userNumberRef = useRef<any>(null)
 
 	const updateMonthsAndPrice = (months: number, price: number) => {
-		if (monthsElementRef.current && priceElementRef.current) {
-			monthsElementRef.current.textContent = `${months} mon.`
-			priceElementRef.current.textContent = `${price} $.`
-		}
+		setMonths(months)
+		setPrice(price)
 	}
 
 	const isValidForm = () => {
-		const name = userNameRef.current.value
-		const email = userEmailRef.current.value
-		const number = userNumberRef.current.value
-
 		const isValName = isValidName(name)
 		const isValEmail = isValidEmail(email)
 		const isValNumber = isValidNumber(number)
@@ -193,8 +185,6 @@ const useHome = () => {
 		name,
 		email,
 		number,
-		monthsElementRef,
-		priceElementRef,
 		userNameRef,
 		userEmailRef,
 		userNumberRef,

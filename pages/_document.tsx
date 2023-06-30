@@ -31,7 +31,6 @@ export default function Document() {
 				href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap'
 				rel='stylesheet'
 			/>
-			<script type='text/javascript' src='https://js.stripe.com/v3/'></script>
 			<title>Payment Next Level Challenge</title>
 			<Head />
 			<body>
