@@ -1,5 +1,5 @@
 // @ts-nocheck
-const backUrl = 'http://localhost:5094/api'
+const backUrl = `${process.env.REACT_APP_SERVER_URL}/api`
 
 export async function callApi(endpoint, method = 'POST', data = {}) {
 	const options = {

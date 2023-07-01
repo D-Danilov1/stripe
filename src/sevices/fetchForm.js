@@ -1,4 +1,4 @@
-const backUrl = 'http://localhost:5094/api'
+const backUrl = `${process.env.REACT_APP_SERVER_URL}/api`
 const productId = 'prod_OAEUGP2FAymd0q'
 
 async function callApi(endpoint, method = 'POST', data = {}) {
