@@ -3,7 +3,7 @@ const nextConfig = {
 	poweredByHeader: false,
 	env: {
 		PUBLIC_KEY: process.env.PUBLIC_KEY,
-		PUBLIC_KEY: process.env.REACT_APP_SERVER_URL,
+		REACT_APP_SERVER_URL: process.env.REACT_APP_SERVER_URL,
 	},
 	async rewrites() {
 		return [
