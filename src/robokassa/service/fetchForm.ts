@@ -1,25 +1,28 @@
 // @ts-nocheck
+
 const backUrl = `${process.env.REACT_APP_SERVER_URL}/api`
 
 export async function callApi(endpoint, method = 'POST', data = {}) {
-	const options = {
+	const config = {
 		method,
+		url: `${backUrl}${endpoint}`,
 		headers: {
 			'Content-Type': 'application/json',
 		},
+		data,
 	}
 
-	if (method !== 'GET' && method !== 'HEAD') {
-		options.body = JSON.stringify(data)
+	try {
+		const response = await axios(config)
+
+		if (!response.status === 200) {
+			throw new Error(`API request failed with status ${response.status}`)
+		}
+
+		return response.data
+	} catch (error) {
+		throw new Error(`API request failed with error: ${error.message}`)
 	}
-
-	const response = await fetch(`${backUrl}${endpoint}`, options)
-
-	if (!response.ok) {
-		throw new Error(`API request failed with status ${response.status}`)
-	}
-
-	return response.json()
 }
 
 export async function fetchFindOrCreateUser(data) {
@@ -39,9 +42,11 @@ export async function getPaymentLink(data) {
 }
 
 export async function getSuccessPayment(data) {
-	return callApi(`/robokassa/success-url?${new URLSearchParams(data)}`, 'GET')
+	const queryString = new URLSearchParams(data).toString()
+	return callApi(`/robokassa/success-url?${queryString}`, 'GET')
 }
 
 export async function getResultPayment(data) {
-	return callApi(`/robokassa/result-url?${new URLSearchParams(data)}`, 'GET')
+	const queryString = new URLSearchParams(data).toString()
+	return callApi(`/robokassa/result-url?${queryString}`, 'GET')
 }

@@ -1,20 +1,27 @@
+import axios from 'axios'
+
 const backUrl = `${process.env.REACT_APP_SERVER_URL}/api`
 const productId = 'prod_OAEUGP2FAymd0q'
 
 async function callApi(endpoint, method = 'POST', data = {}) {
-	const response = await fetch(`${backUrl}${endpoint}`, {
-		method,
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data),
-	})
+	try {
+		const response = await axios({
+			method,
+			url: `${backUrl}${endpoint}`,
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			data,
+		})
 
-	if (!response.ok) {
-		throw new Error(`API request failed with status ${response.status}`)
+		if (!response.status === 200) {
+			throw new Error(`API request failed with status ${response.status}`)
+		}
+
+		return response.data
+	} catch (error) {
+		throw new Error(`API request failed with error: ${error.message}`)
 	}
-
-	return response.json()
 }
 
 async function fetchCreatePrice(data) {
