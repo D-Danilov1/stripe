@@ -1,5 +1,7 @@
 // @ts-nocheck
 
+import axios from 'axios'
+
 const backUrl = `${process.env.REACT_APP_SERVER_URL}/api`
 
 export async function callApi(endpoint, method = 'POST', data = {}) {

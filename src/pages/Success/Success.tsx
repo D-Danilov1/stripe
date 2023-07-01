@@ -20,7 +20,7 @@ const Success = () => {
 			const { secret, email, period, amount } = query
 
 			if (!secret || !email || !period || !amount || !stripe) {
-				return
+				return console.log('invalid keys')
 			}
 
 			try {
