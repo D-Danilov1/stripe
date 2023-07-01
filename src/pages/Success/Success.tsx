@@ -21,8 +21,10 @@ const Success = () => {
 
 			if (!secret || !email || !period || !amount || !stripe) {
 				return console.log('invalid keys')
+			} else {
+				console.log(secret, email, period, amount)
 			}
-
+			console.log('START 1')
 			try {
 				const { paymentIntent } = await stripe.retrievePaymentIntent(
 					String(secret)
@@ -32,7 +34,7 @@ const Success = () => {
 					const userObj = {
 						email: email,
 					}
-
+					console.log('START')
 					await fetchFindOrCreateUser(userObj)
 
 					const calculateEndDate = (startDate: any, period: any) => {
