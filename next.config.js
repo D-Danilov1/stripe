@@ -4,6 +4,19 @@ const nextConfig = {
 	env: {
 		PUBLIC_KEY: process.env.PUBLIC_KEY,
 	},
+	// async rewrites() {
+	// 	return [
+	// 		{
+	// 			source: '/api/:path*',
+	// 			destination: `${process.env.REACT_APP_SERVER_URL}/:path*`,
+	// 		},
+	// 		{
+	// 			source: '/uploads/:path*',
+	// 			destination: `${process.env.REACT_APP_SERVER_URL}/uploads/:path*`,
+	// 		},
+	// 	]
+	// },
 }
 
 module.exports = nextConfig
+
