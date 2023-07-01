@@ -50,7 +50,7 @@ const Subscribe = (): JSX.Element => {
 		const { error } = await stripe.confirmPayment({
 			elements: stripeElements,
 			confirmParams: {
-				return_url: `http://89.108.76.13/success?secret=${query.clientSecret}&email=${query.email}&period=${query.period}&amount=${query.amount}`,
+				return_url: `${process.env.REACT_APP_URL}/success?secret=${query.clientSecret}&email=${query.email}&period=${query.period}&amount=${query.amount}`,
 			},
 		})
 
