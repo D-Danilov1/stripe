@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const backUrl = `${process.env.REACT_APP_SERVER_URL}/api`
-const productId = 'prod_OAEUGP2FAymd0q'
+const productId = 'prod_OBUFHoVO1XUR0c'
 
 async function callApi(endpoint, method = 'POST', data = {}) {
 	try {
