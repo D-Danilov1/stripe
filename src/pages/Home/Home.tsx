@@ -20,7 +20,7 @@ const Home = () => {
 				</div>
 				<button className='button' onClick={() => setModalVisible(true)}>
 					Participate
-				</button>
+				</button> 
 			</div>
 			<Modal modalVisible={modalVisible} setModalVisible={setModalVisible} />
 		</>
