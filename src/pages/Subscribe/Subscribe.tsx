@@ -46,17 +46,18 @@ const Subscribe = (): JSX.Element => {
 		const stripe: Stripe | null | any = await stripePromise
 		// @ts-ignore
 		if (!stripe) return null
-		console.log('help')
-		// const { error } = await stripe.confirmPayment({
-		// 	elements: stripeElements,
-		// 	confirmParams: {
-		// 		return_url: `${process.env.REACT_APP_URL}/success?secret=${query.clientSecret}&email=${query.email}&period=${query.period}&amount=${query.amount}`,
-		// 	},
-		// })
+		console.log(query)
 
-		// if (error && errorMessageRef?.current) {
-		// 	errorMessageRef.current.textContent = error.message
-		// }
+		const { error } = await stripe.confirmPayment({
+			elements: stripeElements,
+			confirmParams: {
+				return_url: `http://89.108.76.13/success?secret=${query.clientSecret}&email=${query.email}&period=${query.period}&amount=${query.amount}`,
+			},
+		})
+
+		if (error && errorMessageRef?.current) {
+			errorMessageRef.current.textContent = error.message
+		}
 	}
 
 	return (
