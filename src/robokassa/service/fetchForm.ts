@@ -1,5 +1,5 @@
 // @ts-nocheck
-const backUrl = 'http://185.238.2.176:5064/api'
+const backUrl = 'http://localhost:5000/api'
 
 export async function callApi(endpoint, method = 'POST', data = {}) {
 	const options = {
