@@ -16,6 +16,7 @@ const Success = () => {
 
 	useEffect(() => {
 		if (!query) return
+		
 		const fetchData = async () => {
 			if (!query?.SignatureValue || !query?.InvId || !query?.OutSum) return
 
