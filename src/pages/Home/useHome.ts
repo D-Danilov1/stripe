@@ -79,9 +79,7 @@ const useHome = () => {
 			productId: productId,
 		}
 
-		if (months === 3) {
-			responsePrice.interval_count = 3
-		} else if (months === 6) {
+		if (months === 6) {
 			responsePrice.interval_count = 6
 		} else if (months === 12) {
 			responsePrice.interval = 'year'
@@ -145,15 +143,13 @@ const useHome = () => {
 		let updatedPrice = price
 
 		if (months === 1) {
-			updatedMonths += 2
-			updatedPrice *= 2
-		} else if (months === 3) {
-			updatedMonths += 3
+			updatedMonths += 5
 			updatedPrice *= 2
 		} else if (months === 6) {
 			updatedMonths += 6
 			updatedPrice *= 2
 		}
+
 
 		setMonths(updatedMonths)
 		setPrice(updatedPrice)
@@ -166,13 +162,10 @@ const useHome = () => {
 
 		if (months === 12) {
 			updatedMonths -= 6
-			updatedPrice = 51
+			updatedPrice = 4350
 		} else if (months === 6) {
-			updatedMonths -= 3
-			updatedPrice = 34
-		} else if (months === 3) {
-			updatedMonths -= 2
-			updatedPrice = 17
+			updatedMonths -= 5
+			updatedPrice = 1450
 		}
 
 		setMonths(updatedMonths)
