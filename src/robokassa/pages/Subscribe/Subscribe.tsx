@@ -1,9 +1,7 @@
 import React, { useRef } from 'react'
-import { useRouter } from 'next/router'
 import styles from './Subscribe.module.css'
 
 const Subscribe = (): JSX.Element => {
-	const { query } = useRouter()
 	const paymentElementRef = useRef<HTMLDivElement | null>(null)
 	const errorMessageRef = useRef<HTMLDivElement | null>(null)
 
