@@ -96,10 +96,7 @@ const useHome = () => {
 		let updatedPrice = price
 
 		if (months === 1) {
-			updatedMonths += 2
-			updatedPrice *= 2
-		} else if (months === 3) {
-			updatedMonths += 3
+			updatedMonths += 5
 			updatedPrice *= 2
 		} else if (months === 6) {
 			updatedMonths += 6
@@ -119,13 +116,9 @@ const useHome = () => {
 			updatedMonths -= 6
 			updatedPrice = 4350
 		} else if (months === 6) {
-			updatedMonths -= 3
-			updatedPrice = 2900
-		} else if (months === 3) {
-			updatedMonths -= 2
+			updatedMonths -= 5
 			updatedPrice = 1450
 		}
-
 		setMonths(updatedMonths)
 		setPrice(updatedPrice)
 		updateMonthsAndPrice(updatedMonths, updatedPrice)
