@@ -156,7 +156,7 @@ body {
 	overflow-x: hidden;
 }
 p {
-	color: black !important
+	color: black !important;
 }
 .container {
 	width: 500px;
@@ -226,7 +226,6 @@ p {
 	cursor: pointer;
 }
 .modal {
-	display: none;
 	position: fixed;
 	z-index: 1;
 	left: 0;
@@ -235,8 +234,6 @@ p {
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
-	background-color: #000;
-	background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content {
 	background-color: #fefefe;
@@ -252,38 +249,7 @@ p {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-.close {
-	position: absolute;
-	right: 32px;
-	top: 32px;
-	width: 32px;
-	cursor: pointer;
-	height: 32px;
-}
-.close:hover {
-	opacity: 1;
-}
-.close:before,
-.close:after {
-	position: absolute;
-	left: 15px;
-	content: ' ';
-	height: 33px;
-	width: 2px;
-	background-color: #fff;
-}
-.close:before {
-	transform: rotate(45deg);
-}
-.close:after {
-	transform: rotate(-45deg);
-}
-@media screen and (max-width: 400px) {
-	.close {
-		top: 15px;
-		right: 15px;
-	}
-}
+
 .modal__title {
 	font-size: 24px;
 	line-height: 1.35;

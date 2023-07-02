@@ -1,29 +1,84 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-import Modal from './Modal'
+import useHome from './useHome'
+import PlusSvg from './PlusSvg'
+import MinusSvg from './MinusSvg'
 
 const Home = () => {
-	const [modalVisible, setModalVisible] = useState<boolean>(false)
-	const price = 17
+	const {
+		months,
+		price,
+		name,
+		email,
+		number,
+		userNameRef,
+		userEmailRef,
+		userNumberRef,
+		handleSubmit,
+		setName,
+		setNumber,
+		setEmail,
+		handleMinusClick,
+		handlePlusClick,
+	} = useHome()
 
 	return (
-		<>
-			<div className='container'>
-				<h1 className='title'>
-					It's time to act, it's time to live life to the fullest!
-				</h1>
-				<p className='subtitle'>
-					Register now and let's do it together, shoulder to shoulder!
-				</p>
-				<div className='text'>
-					<p>{price}$</p>
+		<div className='modal'>
+			<div className='modal-content'>
+				<h2 className='modal__title'>
+					Payment for participation in the Next Level Challenge
+				</h2>
+				<div className='counter'>
+					<p className='counter__title'>Next Level Challenge</p>
+					<div className='counter__menu'>
+						<div onClick={handleMinusClick}>
+							<MinusSvg />
+						</div>
+						<p id='months'>{months} mon.</p>
+						<div onClick={() => handlePlusClick()}>
+							<PlusSvg />
+						</div>
+					</div>
+					<p className='price'>{price}$</p>
 				</div>
-				<button className='button' onClick={() => setModalVisible(true)}>
-					Participate
-				</button> 
+				<p className='modal__text'>Fill in all fields and proceed to payment</p>
+				<form onSubmit={handleSubmit}>
+					<div className='modal__input'>
+						<p>Your name</p>
+						<input
+							type='text'
+							className='user_name'
+							value={name}
+							ref={userNameRef}
+							onChange={e => setName(e.target.value)}
+						/>
+					</div>
+					<div className='modal__input'>
+						<p>Your email</p>
+						<input
+							type='text'
+							className='user_email'
+							value={email}
+							ref={userEmailRef}
+							onChange={e => setEmail(e.target.value)}
+						/>
+					</div>
+					<div className='modal__input'>
+						<p>Your phone number</p>
+						<input
+							type='text'
+							className='user_number'
+							value={number}
+							ref={userNumberRef}
+							onChange={e => setNumber(e.target.value)}
+						/>
+					</div>
+					<button type='submit' className='modal__btn'>
+						Go to the payment
+					</button>
+				</form>
 			</div>
-			<Modal modalVisible={modalVisible} setModalVisible={setModalVisible} />
-		</>
+		</div>
 	)
 }
 

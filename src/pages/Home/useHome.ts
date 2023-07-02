@@ -162,10 +162,10 @@ const useHome = () => {
 
 		if (months === 12) {
 			updatedMonths -= 6
-			updatedPrice = 4350
+			updatedPrice = 34
 		} else if (months === 6) {
 			updatedMonths -= 5
-			updatedPrice = 1450
+			updatedPrice = 17
 		}
 
 		setMonths(updatedMonths)
