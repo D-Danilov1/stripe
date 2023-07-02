@@ -12,6 +12,7 @@ export default function Document() {
 			/>
 			{/* <link rel='canonical' href='https://nextworkoutapp.com' />
 			<meta name='format-detection' content='telephone=no' /> */}
+			<meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" /> 
 			<link
 				rel='shortcut icon'
 				href='https://static.tildacdn.com/tild3362-3363-4237-b763-626138306130/favicon_1.ico'
