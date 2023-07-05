@@ -17,12 +17,18 @@ const Success = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const stripe: any = await stripePromise
-			const { secret, email, period, amount } = query
+			const { secret, email, period, amount, subscriptionId } = query
 
-			if (!secret || !email || !period || !amount || !stripe) {
+			if (
+				!secret ||
+				!email ||
+				!period ||
+				!amount ||
+				!stripe ||
+				!subscriptionId
+			) {
 				return console.log('invalid keys')
 			} else {
-				console.log(secret, email, period, amount)
 			}
 			console.log('START 1')
 			try {
@@ -58,6 +64,7 @@ const Success = () => {
 						payment_amount: Number(amount),
 						start_of: new Date().toISOString(),
 						end_of: calculateEndDate(new Date(), period),
+						subscriptionId: subscriptionId,
 					}
 
 					await fetchCreateSubscribe(subscriptionObj)
