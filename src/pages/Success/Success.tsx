@@ -13,7 +13,6 @@ const stripePromise = loadStripe(process.env.PUBLIC_KEY || '')
 
 const Success = () => {
 	const { query } = useRouter()
-
 	useEffect(() => {
 		const fetchData = async () => {
 			const stripe: any = await stripePromise
@@ -30,7 +29,6 @@ const Success = () => {
 				return console.log('invalid keys')
 			} else {
 			}
-			console.log('START 1')
 			try {
 				const { paymentIntent } = await stripe.retrievePaymentIntent(
 					String(secret)
@@ -40,7 +38,6 @@ const Success = () => {
 					const userObj = {
 						email: email,
 					}
-					console.log('START')
 					await fetchFindOrCreateUser(userObj)
 
 					const calculateEndDate = (startDate: any, period: any) => {

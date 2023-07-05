@@ -16,7 +16,7 @@ const Success = () => {
 
 	useEffect(() => {
 		if (!query) return
-		
+
 		const fetchData = async () => {
 			if (!query?.SignatureValue || !query?.InvId || !query?.OutSum) return
 
@@ -61,7 +61,6 @@ const Success = () => {
 					}
 
 					await fetchCreateSubscribe(subscriptionObj)
-					console.log('success')
 				} else {
 					console.log(
 						'Payment failed',
@@ -70,7 +69,7 @@ const Success = () => {
 					)
 				}
 			} catch (error) {
-				console.log('Error 123:', error)
+				console.log(error)
 			}
 		}
 

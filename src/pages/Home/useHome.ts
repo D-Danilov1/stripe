@@ -128,7 +128,7 @@ const useHome = () => {
 				}&email=${email}&period=${months}&amount=${price * 100}`
 			)
 		} catch (error) {
-			console.log('error', error)
+			console.log( error)
 		}
 	}
 

@@ -46,7 +46,6 @@ const Subscribe = (): JSX.Element => {
 		const stripe: Stripe | null | any = await stripePromise
 		// @ts-ignore
 		if (!stripe) return null
-		console.log(query)
 
 		const { error } = await stripe.confirmPayment({
 			elements: stripeElements,
