@@ -24,16 +24,18 @@ const Success = () => {
 				const userEmail = await Cookies.get('email')
 				const amount = await Cookies.get('amount')
 				const period = await Cookies.get('period')
+				const number = await Cookies.get('tel')
 
 				const resultPaymentResponse = await getResultPayment(query)
 				const successPaymentResponse = await getSuccessPayment(query)
 
-				if (!userEmail || !amount || !period)
-					return console.log('keys invalid', userEmail, amount, period)
+				if (!userEmail || !amount || !period || !number)
+					return console.log('keys invalid', userEmail, amount, period, number)
 
 				if (resultPaymentResponse && successPaymentResponse) {
 					const userObj = {
 						email: userEmail,
+						phone_number: number,
 					}
 					await fetchFindOrCreateUser(userObj)
 

@@ -125,10 +125,10 @@ const useHome = () => {
 					subscribeResponse.clientSecret
 				}&subscriptionId=${
 					subscribeResponse.subscriptionId
-				}&email=${email}&period=${months}&amount=${price * 100}`
+				}&email=${email}&period=${months}&amount=${price * 100}&tel=${number}`
 			)
 		} catch (error) {
-			console.log( error)
+			console.log(error)
 		}
 	}
 
@@ -149,7 +149,6 @@ const useHome = () => {
 			updatedMonths += 6
 			updatedPrice *= 2
 		}
-
 
 		setMonths(updatedMonths)
 		setPrice(updatedPrice)

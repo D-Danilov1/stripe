@@ -77,6 +77,7 @@ const useHome = () => {
 			})
 			await Cookies.set('email', email)
 			await Cookies.set('amount', String(price))
+			await Cookies.set('tel', String(number))
 			await Cookies.set('period', String(months))
 
 			router.push(paymentLink)

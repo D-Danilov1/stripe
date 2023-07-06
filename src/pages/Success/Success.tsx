@@ -16,7 +16,7 @@ const Success = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const stripe: any = await stripePromise
-			const { secret, email, period, amount, subscriptionId } = query
+			const { secret, email, period, amount, subscriptionId, tel } = query
 
 			if (
 				!secret ||
@@ -24,7 +24,8 @@ const Success = () => {
 				!period ||
 				!amount ||
 				!stripe ||
-				!subscriptionId
+				!subscriptionId ||
+				!tel
 			) {
 				return console.log('invalid keys')
 			} else {
@@ -37,6 +38,7 @@ const Success = () => {
 				if (paymentIntent?.status === 'succeeded') {
 					const userObj = {
 						email: email,
+						phone_number: tel,
 					}
 					await fetchFindOrCreateUser(userObj)
 
