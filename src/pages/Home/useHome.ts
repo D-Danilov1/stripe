@@ -90,23 +90,6 @@ const useHome = () => {
 				fetchCreateCustomer({
 					email: email,
 					name: name,
-					address: {
-						city: 'Brothers',
-						country: 'US',
-						line1: '27 Fredrick Ave',
-						postal_code: '97712',
-						state: 'CA',
-					},
-					shipping: {
-						address: {
-							city: 'Brothers',
-							country: 'US',
-							line1: '27 Fredrick Ave',
-							postal_code: '97712',
-							state: 'CA',
-						},
-						name: name,
-					},
 				}),
 				fetchCreatePrice(responsePrice),
 			])
