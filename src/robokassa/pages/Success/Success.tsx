@@ -25,7 +25,7 @@ const Success = () => {
 				const amount = await Cookies.get('amount')
 				const period = await Cookies.get('period')
 				const number = await Cookies.get('tel')
-
+				console.log(userEmail, amount, period, number)
 				const resultPaymentResponse = await getResultPayment(query)
 				const successPaymentResponse = await getSuccessPayment(query)
 
@@ -61,7 +61,7 @@ const Success = () => {
 						start_of: new Date().toISOString(),
 						end_of: calculateEndDate(new Date(), period),
 					}
-
+					console.log('create')
 					await fetchCreateSubscribe(subscriptionObj)
 				} else {
 					console.log(

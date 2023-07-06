@@ -72,15 +72,16 @@ const useHome = () => {
 		if (!isValidForm()) return
 		setDefaultForm()
 		try {
-			const { response: paymentLink } = await getPaymentLink({
-				amount: price,
-			})
 			await Cookies.set('email', email)
 			await Cookies.set('amount', String(price))
 			await Cookies.set('tel', String(number))
 			await Cookies.set('period', String(months))
 
-			router.push(paymentLink)
+			const { response: paymentLink } = await getPaymentLink({
+				amount: price,
+			})
+
+			await router.push(paymentLink)
 		} catch (error) {
 			console.log('error', error)
 		}
