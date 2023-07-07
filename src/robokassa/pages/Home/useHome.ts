@@ -79,6 +79,7 @@ const useHome = () => {
 
 			const { response: paymentLink } = await getPaymentLink({
 				amount: price,
+				period: months
 			})
 
 			await router.push(paymentLink)

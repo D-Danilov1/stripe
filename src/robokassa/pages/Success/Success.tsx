@@ -18,8 +18,9 @@ const Success = () => {
 		if (!query) return
 
 		const fetchData = async () => {
+			console.log(query)
 			if (!query?.SignatureValue || !query?.InvId || !query?.OutSum) return
-
+			console.log(query)
 			try {
 				const userEmail = await Cookies.get('email')
 				const amount = await Cookies.get('amount')
