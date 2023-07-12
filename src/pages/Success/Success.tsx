@@ -8,6 +8,7 @@ import {
 } from '@/src/sevices/fetchForm'
 import { useRouter } from 'next/router'
 import { loadStripe } from '@stripe/stripe-js'
+import Cookies from 'js-cookie'
 
 const stripePromise = loadStripe(process.env.PUBLIC_KEY || '')
 
@@ -16,7 +17,12 @@ const Success = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const stripe: any = await stripePromise
-			const { secret, email, period, amount, subscriptionId, tel } = query
+			const secret = await Cookies.get('clientSecret')
+			const subscriptionId = await Cookies.get('subscriptionId')
+			const email = await Cookies.get('email')
+			const period = await Cookies.get('period')
+			const amount = await Cookies.get('amount')
+			const tel = await Cookies.get('tel')
 
 			if (
 				!secret ||
@@ -34,8 +40,9 @@ const Success = () => {
 				const { paymentIntent } = await stripe.retrievePaymentIntent(
 					String(secret)
 				)
+				console.log(paymentIntent?.status)
 
-				if (paymentIntent?.status === 'succeeded') {
+				if (paymentIntent?.status == 'succeeded') {
 					const userObj = {
 						email: email,
 						phone_number: tel,
