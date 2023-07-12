@@ -33,7 +33,7 @@ const useHome = () => {
 	}
 
 	const isValidName = (name: string) => {
-		const usernameRegex = /^[a-zA-Za-яА-Я]{3,}$/
+		const usernameRegex = /^[\p{L}\s]{3,}$/u
 		const isValid = usernameRegex.test(name)
 		if (!isValid) {
 			userNameRef.current.classList.add('invalid')
@@ -79,7 +79,7 @@ const useHome = () => {
 
 			const { response: paymentLink } = await getPaymentLink({
 				amount: price,
-				period: months
+				period: months,
 			})
 
 			await router.push(paymentLink)
