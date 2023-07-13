@@ -73,7 +73,7 @@ const Home = () => {
 						draggable={false}
 						className={styles.img}
 					/>
-				</div>{' '}
+				</div>
 				{!isShowPayments ? (
 					<>
 						<h2 className={styles.title}>

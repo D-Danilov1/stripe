@@ -2,6 +2,8 @@ import React from 'react'
 
 import useHome from './useHome'
 import { t } from '@/src/hooks/getLang'
+import Image from 'next/image'
+import HomeImg from '../../../assets/home_bg.png'
 
 const Home = () => {
 	const {
@@ -20,6 +22,9 @@ const Home = () => {
 	return (
 		<div className='modal'>
 			<div className='modal-content'>
+				<div className='wrapper'>
+					<Image src={HomeImg} alt='Igor' draggable={false} className='img' />
+				</div>
 				<h2 className='modal__title'>{t('Payment Next Level Challenge')}</h2>
 
 				<p className='modal__text'>
