@@ -3,6 +3,7 @@ import { loadStripe, Stripe, StripeElements } from '@stripe/stripe-js'
 import { useRouter } from 'next/router'
 import styles from './Subscribe.module.css'
 import Cookies from 'js-cookie'
+import { t } from '@/src/hooks/getLang'
 
 const stripePromise = loadStripe(process.env.PUBLIC_KEY || '')
 
@@ -47,7 +48,6 @@ const Subscribe = (): JSX.Element => {
 		const stripe: Stripe | null | any = await stripePromise
 		// @ts-ignore
 		if (!stripe) return null
-		//localhost:3000/subscribe?clientSecret=pi_3NSuQdHb8NpiNcYO0BM3Hge6_secret_phzRoHLvgINu7L6C4oLqFYW7h&subscriptionId=sub_1NSuQcHb8NpiNcYOojZvPEKm&email=test@mail.ru&period=1&amount=1700&tel=79829472886
 		await Cookies.set('clientSecret', String(query.clientSecret))
 		await Cookies.set('subscriptionId', String(query.subscriptionId))
 		await Cookies.set('email', String(query.email))
@@ -58,7 +58,7 @@ const Subscribe = (): JSX.Element => {
 		const { error } = await stripe.confirmPayment({
 			elements: stripeElements,
 			confirmParams: {
-				return_url: `https://www.next-payment.site/success`,
+				return_url: `https://www.next-payment.site/stripe/success`,
 			},
 		})
 
@@ -76,7 +76,7 @@ const Subscribe = (): JSX.Element => {
 					className={styles.form}
 				></div>
 				<button id='submit' className={styles.btn} type='submit'>
-					Subscribe
+					{t('Subscribe')}
 				</button>
 				<div ref={errorMessageRef} id='error-message'></div>
 			</form>

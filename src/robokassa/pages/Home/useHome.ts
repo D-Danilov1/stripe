@@ -5,8 +5,6 @@ import Cookies from 'js-cookie'
 
 const useHome = () => {
 	const router = useRouter()
-	const [months, setMonths] = useState<number>(1)
-	const [price, setPrice] = useState<number>(1450)
 	const [name, setName] = useState<string>('')
 	const [email, setEmail] = useState<string>('')
 	const [number, setNumber] = useState<string>('')
@@ -14,11 +12,6 @@ const useHome = () => {
 	const userNameRef = useRef<any>(null)
 	const userEmailRef = useRef<any>(null)
 	const userNumberRef = useRef<any>(null)
-
-	const updateMonthsAndPrice = (months: number, price: number) => {
-		setMonths(months)
-		setPrice(price)
-	}
 
 	const isValidForm = () => {
 		const name = userNameRef.current.value
@@ -73,9 +66,9 @@ const useHome = () => {
 		setDefaultForm()
 		try {
 			await Cookies.set('email', email)
-			await Cookies.set('amount', String(price))
+			const price = await Cookies.get('amount')
 			await Cookies.set('tel', String(number))
-			await Cookies.set('period', String(months))
+			const months = await Cookies.get('period')
 
 			const { response: paymentLink } = await getPaymentLink({
 				amount: price,
@@ -94,42 +87,7 @@ const useHome = () => {
 		userNumberRef.current.classList.remove('invalid')
 	}
 
-	const handlePlusClick = () => {
-		let updatedMonths = months
-		let updatedPrice = price
-
-		if (months === 1) {
-			updatedMonths += 5
-			updatedPrice *= 2
-		} else if (months === 6) {
-			updatedMonths += 6
-			updatedPrice *= 2
-		}
-
-		setMonths(updatedMonths)
-		setPrice(updatedPrice)
-		updateMonthsAndPrice(updatedMonths, updatedPrice)
-	}
-
-	const handleMinusClick = () => {
-		let updatedMonths = months
-		let updatedPrice = price
-
-		if (months === 12) {
-			updatedMonths -= 6
-			updatedPrice = 4350
-		} else if (months === 6) {
-			updatedMonths -= 5
-			updatedPrice = 1450
-		}
-		setMonths(updatedMonths)
-		setPrice(updatedPrice)
-		updateMonthsAndPrice(updatedMonths, updatedPrice)
-	}
-
 	return {
-		months,
-		price,
 		name,
 		email,
 		number,
@@ -142,11 +100,6 @@ const useHome = () => {
 		setName,
 		setNumber,
 		setEmail,
-		updateMonthsAndPrice,
-		setPrice,
-		setMonths,
-		handleMinusClick,
-		handlePlusClick,
 	}
 }
 

@@ -1,13 +1,10 @@
 import React from 'react'
 
 import useHome from './useHome'
-import PlusSvg from './PlusSvg'
-import MinusSvg from './MinusSvg'
+import { t } from '@/src/hooks/getLang'
 
 const Home = () => {
 	const {
-		months,
-		price,
 		name,
 		email,
 		number,
@@ -18,33 +15,19 @@ const Home = () => {
 		setName,
 		setNumber,
 		setEmail,
-		handleMinusClick,
-		handlePlusClick,
 	} = useHome()
 
 	return (
 		<div className='modal'>
 			<div className='modal-content'>
-				<h2 className='modal__title'>
-					Payment for participation in the Next Level Challenge
-				</h2>
-				<div className='counter'>
-					<p className='counter__title'>Next Level Challenge</p>
-					<div className='counter__menu'>
-						<div onClick={handleMinusClick}>
-							<MinusSvg />
-						</div>
-						<p id='months'>{months} mon.</p>
-						<div onClick={() => handlePlusClick()}>
-							<PlusSvg />
-						</div>
-					</div>
-					<p className='price'>{price}$</p>
-				</div>
-				<p className='modal__text'>Fill in all fields and proceed to payment</p>
+				<h2 className='modal__title'>{t('Payment Next Level Challenge')}</h2>
+
+				<p className='modal__text'>
+					{t('Fill in all fields and proceed to payment')}
+				</p>
 				<form onSubmit={handleSubmit}>
 					<div className='modal__input'>
-						<p>Your name</p>
+						<p>{t('Your name')}</p>
 						<input
 							type='text'
 							className='user_name'
@@ -54,7 +37,7 @@ const Home = () => {
 						/>
 					</div>
 					<div className='modal__input'>
-						<p>Your email</p>
+						<p>{t('Your email')}</p>
 						<input
 							type='text'
 							className='user_email'
@@ -64,7 +47,7 @@ const Home = () => {
 						/>
 					</div>
 					<div className='modal__input'>
-						<p>Your phone number</p>
+						<p>{t('Your tel')}</p>
 						<input
 							type='text'
 							className='user_number'
@@ -74,7 +57,7 @@ const Home = () => {
 						/>
 					</div>
 					<button type='submit' className='modal__btn'>
-						Go to the payment
+						Перейти к оплате
 					</button>
 				</form>
 			</div>

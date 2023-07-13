@@ -1,5 +1,12 @@
 .title {
 	font-size: 36px;
+	margin-bottom: 15px;
+}
+.wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
 }
 .button {
 	display: block;
@@ -26,3 +33,4 @@
 	margin-top: 30px;
 	text-decoration: none;
 }
+

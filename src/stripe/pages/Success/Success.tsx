@@ -5,41 +5,52 @@ import {
 	fetchCreateSubscribe,
 	fetchFindOrCreateSubscribePeriods,
 	fetchFindOrCreateUser,
-	getResultPayment,
-	getSuccessPayment,
-} from '../../service/fetchForm'
+} from '@/src/stripe/sevices/fetchForm'
 import { useRouter } from 'next/router'
+import { loadStripe } from '@stripe/stripe-js'
 import Cookies from 'js-cookie'
 import { t } from '@/src/hooks/getLang'
 import GooglePlay from '../../../assets/google-play.png'
 import Image from 'next/image'
 
+const stripePromise = loadStripe(process.env.PUBLIC_KEY || '')
+
 const Success = () => {
 	const { query } = useRouter()
-
 	useEffect(() => {
 		if (!query) return
 
 		const fetchData = async () => {
-			console.log(query)
-			if (!query?.SignatureValue || !query?.InvId || !query?.OutSum) return
-			console.log(query)
+			const stripe: any = await stripePromise
+			const secret = await Cookies.get('clientSecret')
+			const subscriptionId = await Cookies.get('subscriptionId')
+			const email = await Cookies.get('email')
+			const period = await Cookies.get('period')
+			const amount = await Cookies.get('amount')
+			const tel = await Cookies.get('tel')
+
+			if (
+				!secret ||
+				!email ||
+				!period ||
+				!amount ||
+				!stripe ||
+				!subscriptionId ||
+				!tel
+			) {
+				return console.log('invalid keys')
+			} else {
+			}
 			try {
-				const userEmail = await Cookies.get('email')
-				const amount = await Cookies.get('amount')
-				const period = await Cookies.get('period')
-				const number = await Cookies.get('tel')
-				console.log(userEmail, amount, period, number)
-				const resultPaymentResponse = await getResultPayment(query)
-				const successPaymentResponse = await getSuccessPayment(query)
+				const { paymentIntent } = await stripe.retrievePaymentIntent(
+					String(secret)
+				)
+				console.log(paymentIntent?.status)
 
-				if (!userEmail || !amount || !period || !number)
-					return console.log('keys invalid', userEmail, amount, period, number)
-
-				if (resultPaymentResponse && successPaymentResponse) {
+				if (paymentIntent?.status == 'succeeded') {
 					const userObj = {
-						email: userEmail,
-						phone_number: number,
+						email: email,
+						phone_number: tel,
 					}
 					await fetchFindOrCreateUser(userObj)
 
@@ -59,28 +70,26 @@ const Success = () => {
 					)
 
 					const subscriptionObj = {
-						userEmail: userEmail,
+						userEmail: email,
 						subscription_period_id: subscriptionPeriod.response.id,
 						payment_amount: Number(amount),
 						start_of: new Date().toISOString(),
 						end_of: calculateEndDate(new Date(), period),
+						subscriptionId: subscriptionId,
 					}
-					console.log('create')
+
 					await fetchCreateSubscribe(subscriptionObj)
 				} else {
-					console.log(
-						'Payment failed',
-						resultPaymentResponse,
-						successPaymentResponse
-					)
+					console.log('Payment failed')
 				}
 			} catch (error) {
-				console.log(error)
+				console.error('Error:', error)
 			}
 		}
 
 		fetchData()
 	}, [query])
+
 	return (
 		<div className='container'>
 			<h1 className={styles.title}>{t('Thanks for the payment!')}</h1>

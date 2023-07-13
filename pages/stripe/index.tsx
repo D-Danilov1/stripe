@@ -1,6 +1,6 @@
-import { t } from '@/src/hooks/getLang'
-import Home from '@/src/robokassa/pages/Home/Home'
 import Head from 'next/head'
+import Home from '@/src/stripe/pages/Home/Home'
+import { t } from '@/src/hooks/getLang'
 
 export default function HomePage() {
 	return (

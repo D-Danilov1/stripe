@@ -7,6 +7,10 @@ const nextConfig = {
 		REACT_APP_URL: process.env.REACT_APP_URL,
 		STRIPE_PRODUCT_ID: process.env.STRIPE_PRODUCT_ID,
 	},
+	i18n: {
+		locales: ['ru', 'en'],
+		defaultLocale: 'en',
+	},
 	// async rewrites() {
 	// 	return [
 	// 		{

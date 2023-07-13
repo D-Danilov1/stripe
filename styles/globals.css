@@ -150,16 +150,17 @@ table {
 	border-spacing: 0;
 }
 body {
-	font-family: 'Raleway', sans-serif;
+	font-family: 'Manrope', sans-serif;
 	background-color: #1c2626;
 	color: black !important;
 	overflow-x: hidden;
+	font-weight: 600;
 }
 p {
 	color: black !important;
 }
 .container {
-	width: 500px;
+	width: 520px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -167,7 +168,7 @@ p {
 	text-align: center;
 	background-color: #fff;
 	padding: 50px;
-	border-radius: 25px;
+	border-radius: 20px;
 	box-shadow: 0px 0px 10px 0px #fff;
 }
 .title {
@@ -256,8 +257,8 @@ p {
 	font-weight: 600;
 	color: #000;
 	line-height: 1;
-	margin-bottom: 10px;
-	font-family: 'Poppins', sans-serif;
+	margin-bottom: 5px;
+	text-align: center;
 }
 .counter {
 	display: flex;
@@ -265,7 +266,6 @@ p {
 	align-items: center;
 	gap: 10px;
 	position: relative;
-	font-family: 'Poppins', sans-serif;
 	border-top: 1px solid #bfbbbb;
 	border-bottom: 1px solid #bfbbbb;
 	padding: 0 5px;
@@ -291,7 +291,6 @@ p {
 	padding: 15px 0;
 	font-weight: 600;
 	vertical-align: middle;
-	font-family: 'Poppins', sans-serif;
 	color: #000;
 }
 .price {
@@ -301,7 +300,6 @@ p {
 	font-weight: 400;
 	vertical-align: middle;
 	font-size: 16px;
-	font-family: 'Poppins', sans-serif;
 	color: #000;
 	width: 45px;
 	white-space: nowrap;
@@ -328,7 +326,6 @@ p {
 	border-radius: 30px;
 	-moz-border-radius: 30px;
 	-webkit-border-radius: 30px;
-	font-family: 'Poppins', sans-serif;
 	font-weight: 500;
 	width: 100%;
 }
@@ -336,11 +333,9 @@ p {
 	padding-top: 20px;
 	text-align: center;
 	margin-bottom: 20px;
-	font-family: 'Poppins', sans-serif;
 }
 .modal__input {
 	width: 100%;
-	font-family: 'Poppins', sans-serif;
 	margin-bottom: 20px;
 }
 .modal__input p {
@@ -352,7 +347,6 @@ p {
 	border: 1px solid #73cbd0;
 	border-radius: 30px;
 	-moz-border-radius: 30px;
-	font-family: 'Poppins', sans-serif;
 	-webkit-border-radius: 30px;
 	padding: 10px 14px;
 	width: 100%;

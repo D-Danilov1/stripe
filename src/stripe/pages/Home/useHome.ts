@@ -7,10 +7,10 @@ import {
 } from '../../sevices/fetchForm'
 
 import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
+
 const useHome = () => {
 	const router = useRouter()
-	const [months, setMonths] = useState<number>(1)
-	const [price, setPrice] = useState<number>(17)
 	const [name, setName] = useState<string>('')
 	const [email, setEmail] = useState<string>('')
 	const [number, setNumber] = useState<string>('')
@@ -18,11 +18,6 @@ const useHome = () => {
 	const userNameRef = useRef<any>(null)
 	const userEmailRef = useRef<any>(null)
 	const userNumberRef = useRef<any>(null)
-
-	const updateMonthsAndPrice = (months: number, price: number) => {
-		setMonths(months)
-		setPrice(price)
-	}
 
 	const isValidForm = () => {
 		const isValName = isValidName(name)
@@ -72,16 +67,23 @@ const useHome = () => {
 		if (!isValidForm()) return
 		setDefaultForm()
 
+		const price = await Cookies.get('amount')
+		const months = await Cookies.get('period')
+
+		if (price || months) {
+			console.log('Error')
+		}
+
 		const responsePrice: any = {
-			unit_amount: price * 100,
+			unit_amount: Number(price) * 100,
 			currency: 'usd',
 			interval: 'month',
 			productId: productId,
 		}
 
-		if (months === 6) {
+		if (Number(months) === 6) {
 			responsePrice.interval_count = 6
-		} else if (months === 12) {
+		} else if (Number(months) === 12) {
 			responsePrice.interval = 'year'
 		}
 
@@ -104,11 +106,13 @@ const useHome = () => {
 
 			const subscribeResponse = await fetchCreateSubscription(subscriptionData)
 			router.push(
-				`/subscribe?clientSecret=${
+				`/stripe/subscribe?clientSecret=${
 					subscribeResponse.clientSecret
 				}&subscriptionId=${
 					subscribeResponse.subscriptionId
-				}&email=${email}&period=${months}&amount=${price * 100}&tel=${number}`
+				}&email=${email}&period=${months}&amount=${
+					Number(price) * 100
+				}&tel=${number}`
 			)
 		} catch (error) {
 			console.log(error)
@@ -121,43 +125,7 @@ const useHome = () => {
 		userNumberRef.current.classList.remove('invalid')
 	}
 
-	const handlePlusClick = () => {
-		let updatedMonths = months
-		let updatedPrice = price
-
-		if (months === 1) {
-			updatedMonths += 5
-			updatedPrice *= 2
-		} else if (months === 6) {
-			updatedMonths += 6
-			updatedPrice *= 2
-		}
-
-		setMonths(updatedMonths)
-		setPrice(updatedPrice)
-		updateMonthsAndPrice(updatedMonths, updatedPrice)
-	}
-
-	const handleMinusClick = () => {
-		let updatedMonths = months
-		let updatedPrice = price
-
-		if (months === 12) {
-			updatedMonths -= 6
-			updatedPrice = 34
-		} else if (months === 6) {
-			updatedMonths -= 5
-			updatedPrice = 17
-		}
-
-		setMonths(updatedMonths)
-		setPrice(updatedPrice)
-		updateMonthsAndPrice(updatedMonths, updatedPrice)
-	}
-
 	return {
-		months,
-		price,
 		name,
 		email,
 		number,
@@ -170,11 +138,6 @@ const useHome = () => {
 		setName,
 		setNumber,
 		setEmail,
-		updateMonthsAndPrice,
-		setPrice,
-		setMonths,
-		handleMinusClick,
-		handlePlusClick,
 	}
 }
 

@@ -15,20 +15,13 @@ export default function Document() {
 				href='https://static.tildacdn.com/tild3362-3363-4237-b763-626138306130/favicon_1.ico'
 				type='image/x-icon'
 			/>
+			<link rel='preconnect' href='https://fonts.googleapis.com' />
+			<link rel='preconnect' href='https://fonts.gstatic.com' />
 			<link
-				rel='stylesheet'
-				href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap'
-				type='text/css'
-			/>
-			<link
-				href='https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap'
+				href='https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&display=swap'
 				rel='stylesheet'
 			/>
-			<link
-				href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap'
-				rel='stylesheet'
-			/>
-			
+
 			<Head />
 			<body>
 				<Main />

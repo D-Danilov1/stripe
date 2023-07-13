@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from './Failed.module.css'
+import { t } from '@/src/hooks/getLang'
 
 const Failed = () => {
 	return (
 		<div className='container'>
-			<h1 className={styles.title}>Что-то пошло не так.</h1>
+			<h1 className={styles.title}>{t('Something went wrong.')}</h1>
 			<Link className={styles.button} href='/'>
-				Вернуться на главную страницу
+				{t('Go back to main page')}
 			</Link>
 		</div>
 	)

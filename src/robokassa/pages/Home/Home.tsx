@@ -1,12 +1,9 @@
 import React from 'react'
-import MinusSvg from './MinusSvg'
 import useHome from './useHome'
-import PlusSvg from './PlusSvg'
+import { t } from '@/src/hooks/getLang'
 
 const Home = () => {
 	const {
-		months,
-		price,
 		name,
 		email,
 		number,
@@ -17,31 +14,19 @@ const Home = () => {
 		setName,
 		setNumber,
 		setEmail,
-		handleMinusClick,
-		handlePlusClick,
 	} = useHome()
 
 	return (
 		<div className='modal'>
 			<div className='modal-content'>
-				<h2 className='modal__title'>Оплата участия в Next Level Challenge</h2>
-				<div className='counter'>
-					<p className='counter__title'>Next Level Challenge</p>
-					<div className='counter__menu'>
-						<div onClick={handleMinusClick}>
-							<MinusSvg />
-						</div>
-						<p>{months} мес.</p>
-						<div onClick={() => handlePlusClick()}>
-							<PlusSvg />
-						</div>
-					</div>
-					<p className='price'>{price} р.</p>
-				</div>
-				<p className='modal__text'>Заполните все поля и переходите к оплате</p>
+				<h2 className='modal__title'>{t('Payment Next Level Challenge')}</h2>
+
+				<p className='modal__text'>
+					{t('Fill in all fields and proceed to payment')}
+				</p>
 				<form onSubmit={handleSubmit}>
 					<div className='modal__input'>
-						<p>Ваше Имя</p>
+						<p>{t('Your name')}</p>
 						<input
 							type='text'
 							className='user_name'
@@ -51,7 +36,7 @@ const Home = () => {
 						/>
 					</div>
 					<div className='modal__input'>
-						<p>Ваш Email</p>
+						<p>{t('Your email')}</p>
 						<input
 							type='text'
 							className='user_email'
@@ -61,7 +46,7 @@ const Home = () => {
 						/>
 					</div>
 					<div className='modal__input'>
-						<p>Ваш Телефон</p>
+						<p>{t('Your tel')}</p>
 						<input
 							type='text'
 							className='user_number'
@@ -71,7 +56,7 @@ const Home = () => {
 						/>
 					</div>
 					<button type='submit' className='modal__btn'>
-						Перейти к оплате
+						{t('Go to the payment')}
 					</button>
 				</form>
 			</div>
