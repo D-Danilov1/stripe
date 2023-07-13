@@ -24,6 +24,16 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+@media screen and (max-height: 820px) {
+	.modal_content {
+		overflow-y: scroll;
+		height: 100%;
+	}
+}
+.modal__content::-webkit-scrollbar {
+	width: 0;
+}
+
 .title {
 	color: #18202b;
 	text-align: center;
