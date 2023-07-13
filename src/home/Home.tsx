@@ -20,7 +20,6 @@ const Home = () => {
 
 	const handlePayment = async (amount: string, period: string) => {
 		if (locale == 'ru') {
-			console.log(1, amount)
 			if (amount === price12) {
 				await Cookies.set('amount', price12R)
 			}
