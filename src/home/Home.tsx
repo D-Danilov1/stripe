@@ -5,6 +5,7 @@ import HomeImg from '../assets/home_bg.png'
 import { t } from '../hooks/getLang'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
+import Arrow from '../assets/Arrow.svg'
 
 const price12R = '7999'
 const price3R = '4999'
@@ -150,14 +151,11 @@ const Home = () => {
 							<div className={styles.btn} onClick={handlePaymentRF}>
 								{t('Payment by RF card')}
 							</div>
-							<p>{t('or')}</p>
 							<div className={styles.btn} onClick={handlePaymentForeign}>
 								{t('Payment by foreign card')}
 							</div>
 						</div>
-						<button className='button' onClick={goToMain}>
-							{t('Come back')}
-						</button>
+						<p className={styles.reset} onClick={goToMain}><Image src={Arrow} alt='Arrow' width={15} />{t('Come back')}</p>
 					</div>
 				)}
 			</div>
