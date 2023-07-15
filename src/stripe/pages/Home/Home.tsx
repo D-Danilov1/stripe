@@ -62,7 +62,7 @@ const Home = () => {
 						/>
 					</div>
 					<button type='submit' className='modal__btn'>
-						Перейти к оплате
+						{t('Go to the payment')}
 					</button>
 				</form>
 			</div>
