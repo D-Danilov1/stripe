@@ -11,6 +11,7 @@ import Cookies from 'js-cookie'
 
 const useHome = () => {
 	const router = useRouter()
+	const { locale } = useRouter()
 	const [name, setName] = useState<string>('')
 	const [email, setEmail] = useState<string>('')
 	const [number, setNumber] = useState<string>('')
@@ -106,7 +107,7 @@ const useHome = () => {
 
 			const subscribeResponse = await fetchCreateSubscription(subscriptionData)
 			router.push(
-				`/stripe/subscribe?clientSecret=${
+				`/${locale}/stripe/subscribe?clientSecret=${
 					subscribeResponse.clientSecret
 				}&subscriptionId=${
 					subscribeResponse.subscriptionId

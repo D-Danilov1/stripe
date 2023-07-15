@@ -8,7 +8,7 @@ import { t } from '@/src/hooks/getLang'
 const stripePromise = loadStripe(process.env.PUBLIC_KEY || '')
 
 const Subscribe = (): JSX.Element => {
-	const { query } = useRouter()
+	const { query, locale } = useRouter()
 	const paymentElementRef = useRef<HTMLDivElement | null>(null)
 	const errorMessageRef = useRef<HTMLDivElement | null>(null)
 	const [stripeElements, setStripeElements] = useState<StripeElements | null>(
@@ -58,7 +58,7 @@ const Subscribe = (): JSX.Element => {
 		const { error } = await stripe.confirmPayment({
 			elements: stripeElements,
 			confirmParams: {
-				return_url: `https://www.next-payment.site/stripe/success`,
+				return_url: `https://www.next-payment.site/${locale}/stripe/success`,
 			},
 		})
 

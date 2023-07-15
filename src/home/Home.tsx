@@ -34,7 +34,7 @@ const Home = () => {
 		}
 
 		if (locale !== 'ru') {
-			return await push('/stripe')
+			return await push('/en/stripe')
 		}
 		setShowPayments(true)
 	}
@@ -59,7 +59,7 @@ const Home = () => {
 		if (amount === priceR) {
 			await Cookies.set('amount', price)
 		}
-		push('/stripe')
+		push(`/${locale}/stripe`)
 	}
 
 	return (
