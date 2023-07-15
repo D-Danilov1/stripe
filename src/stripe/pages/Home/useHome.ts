@@ -76,7 +76,7 @@ const useHome = () => {
 		}
 
 		const responsePrice: any = {
-			unit_amount: (Number(price) * 100).toFixed(2),
+			unit_amount: Number((Number(price) * 100).toFixed(2)),
 			currency: 'usd',
 			interval: 'month',
 			productId: productId,
