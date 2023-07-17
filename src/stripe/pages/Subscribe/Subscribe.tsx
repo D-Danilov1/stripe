@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import styles from './Subscribe.module.css'
 import Cookies from 'js-cookie'
 import { t } from '@/src/hooks/getLang'
+import { Audio, Oval } from 'react-loader-spinner'
 
 const stripePromise = loadStripe(process.env.PUBLIC_KEY || '')
 
@@ -14,6 +15,7 @@ const Subscribe = (): JSX.Element => {
 	const [stripeElements, setStripeElements] = useState<StripeElements | null>(
 		null
 	)
+	const [loading, setLoading] = useState(true) // Add a loading state
 
 	useEffect(() => {
 		const initializeStripeElements = async () => {
@@ -31,6 +33,8 @@ const Subscribe = (): JSX.Element => {
 
 			const paymentElement = elements.create('payment')
 			await paymentElement.mount(paymentElementRef.current!)
+
+			setLoading(false)
 		}
 
 		initializeStripeElements()
@@ -66,20 +70,41 @@ const Subscribe = (): JSX.Element => {
 			errorMessageRef.current.textContent = error.message
 		}
 	}
+	console.log(loading)
 
 	return (
-		<div className={styles.container}>
-			<form id='payment-form' onSubmit={handleSubmit}>
-				<div
-					ref={paymentElementRef}
-					id='payment-element'
-					className={styles.form}
-				></div>
-				<button id='submit' className={styles.btn} type='submit'>
-					{t('Subscribe')}
-				</button>
-				<div ref={errorMessageRef} id='error-message'></div>
-			</form>
+		<div className='modal'>
+			<div className='modal-content'>
+				<div className={styles.container}>
+					<form id='payment-form' onSubmit={handleSubmit}>
+						{loading && (
+							<div className={styles.spinner}>
+								<Oval
+									height={80}
+									width={80}
+									color='#73cbd0'
+									wrapperStyle={{}}
+									wrapperClass=''
+									visible={true}
+									ariaLabel='oval-loading'
+									secondaryColor='#73cbd0'
+									strokeWidth={2}
+									strokeWidthSecondary={2}
+								/>
+							</div>
+						)}
+						<div
+							ref={paymentElementRef}
+							id='payment-element'
+							className={styles.form}
+						></div>
+						<button id='submit' className={styles.btn} type='submit'>
+							{t('Subscribe')}
+						</button>
+						<div ref={errorMessageRef} id='error-message'></div>
+					</form>
+				</div>
+			</div>
 		</div>
 	)
 }

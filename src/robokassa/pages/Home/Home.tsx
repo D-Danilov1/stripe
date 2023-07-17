@@ -34,7 +34,7 @@ const Home = () => {
 						<p>{t('Your name')}</p>
 						<input
 							type='text'
-							className='user_name'
+							className='name'
 							value={name}
 							ref={userNameRef}
 							onChange={e => setName(e.target.value)}
