@@ -28,7 +28,6 @@ const Success = () => {
 			const email = await Cookies.get('email')
 			const period = await Cookies.get('period')
 			const amount = await Cookies.get('amount')
-			const tel = await Cookies.get('tel')
 
 			if (
 				!secret ||
@@ -36,8 +35,7 @@ const Success = () => {
 				!period ||
 				!amount ||
 				!stripe ||
-				!subscriptionId ||
-				!tel
+				!subscriptionId
 			) {
 				return console.log('invalid keys')
 			} else {
@@ -51,7 +49,7 @@ const Success = () => {
 				if (paymentIntent?.status == 'succeeded') {
 					const userObj = {
 						email: email,
-						phone_number: tel,
+						phone_number: '',
 					}
 					await fetchFindOrCreateUser(userObj)
 

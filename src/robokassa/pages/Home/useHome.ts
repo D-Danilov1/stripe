@@ -7,22 +7,17 @@ const useHome = () => {
 	const router = useRouter()
 	const [name, setName] = useState<string>('')
 	const [email, setEmail] = useState<string>('')
-	const [number, setNumber] = useState<string>('')
 
 	const userNameRef = useRef<any>(null)
 	const userEmailRef = useRef<any>(null)
-	const userNumberRef = useRef<any>(null)
 
 	const isValidForm = () => {
 		const name = userNameRef.current.value
 		const email = userEmailRef.current.value
-		const number = userNumberRef.current.value
 
 		const isValName = isValidName(name)
 		const isValEmail = isValidEmail(email)
-		const isValNumber = isValidNumber(number)
-
-		return isValEmail && isValNumber && isValName
+		return isValEmail && isValName
 	}
 
 	const isValidName = (name: string) => {
@@ -47,17 +42,7 @@ const useHome = () => {
 		return isValid
 	}
 
-	const isValidNumber = (phoneNumber: string) => {
-		const phoneRegex =
-			/^\+?\d{1,3}[-.\s]?\(?\d{1,3}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/
-		const isValid = phoneRegex.test(phoneNumber)
-		if (!isValid) {
-			userNumberRef.current.classList.add('invalid')
-		} else {
-			userNumberRef.current.classList.remove('invalid')
-		}
-		return isValid
-	}
+
 
 	const handleSubmit = async (e: any) => {
 		e.preventDefault()
@@ -67,7 +52,6 @@ const useHome = () => {
 		try {
 			await Cookies.set('email', email)
 			const price = await Cookies.get('amount')
-			await Cookies.set('tel', String(number))
 			const months = await Cookies.get('period')
 
 			const { response: paymentLink } = await getPaymentLink({
@@ -84,21 +68,17 @@ const useHome = () => {
 	const setDefaultForm = () => {
 		userNameRef.current.classList.remove('invalid')
 		userEmailRef.current.classList.remove('invalid')
-		userNumberRef.current.classList.remove('invalid')
 	}
 
 	return {
 		name,
 		email,
-		number,
 		userNameRef,
 		userEmailRef,
-		userNumberRef,
 		handleSubmit,
 		setDefaultForm,
 		isValidForm,
 		setName,
-		setNumber,
 		setEmail,
 	}
 }

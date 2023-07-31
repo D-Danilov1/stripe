@@ -7,7 +7,7 @@ export default function FailedPage() {
 	return (
 		<>
 			<Head>
-				<title>{t('Payment Next Level Challenge')}</title>
+				<title>{t("Payment NEXT App")}</title>
 			</Head>
 			<Failed />
 		</>

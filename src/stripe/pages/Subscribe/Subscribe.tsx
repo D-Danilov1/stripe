@@ -57,7 +57,6 @@ const Subscribe = (): JSX.Element => {
 		await Cookies.set('email', String(query.email))
 		await Cookies.set('period', String(query.period))
 		await Cookies.set('amount', String(query.amount))
-		await Cookies.set('tel', String(query.tel))
 
 		const { error } = await stripe.confirmPayment({
 			elements: stripeElements,

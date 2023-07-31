@@ -6,7 +6,7 @@ export default function SuccessPage() {
 	return (
 		<>
 			<Head>
-				<title>{t('Payment Next Level Challenge')}</title>
+				<title>{t("Payment NEXT App")}</title>
 			</Head>
 			<Success />
 		</>

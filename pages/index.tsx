@@ -5,7 +5,7 @@ export default function HomePage() {
 	return (
 		<>
 			<Head>
-				<title>Next Level Challenge</title>
+				<title>NEXT App</title>
 			</Head>
 			<Home />
 		</>
