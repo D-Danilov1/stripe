@@ -119,7 +119,7 @@ const Home = () => {
 							>
 								<div>
 									<p className={styles.box__title}>{t('Subscription')}</p>
-									<p className={styles.box__subtitle}>{t('3 months')}</p>
+									<p className={styles.box__subtitle}>{t('6 months')}</p>
 								</div>
 								<div>
 									<p className={styles.box__title}>{t('discount 33%')}</p>
