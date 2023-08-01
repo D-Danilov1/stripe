@@ -12,7 +12,7 @@ const price3R = "2990"
 const priceR = "599"
 const price12 = "44.90"
 const price3 = "33.90"
-const price = "0.99"
+const price = "0.50"
 
 const Home = () => {
 	const { locale, push } = useRouter()
