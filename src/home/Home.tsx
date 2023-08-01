@@ -9,10 +9,10 @@ import Arrow from "../assets/Arrow.svg"
 
 const price12R = "3990"
 const price3R = "2990"
-const priceR = "1"
+const priceR = "599"
 const price12 = "44.90"
 const price3 = "33.90"
-const price = "0.1"
+const price = "0.99"
 
 const Home = () => {
 	const { locale, push } = useRouter()
