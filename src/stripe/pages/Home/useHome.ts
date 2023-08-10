@@ -60,7 +60,7 @@ const useHome = () => {
 			console.log("Error")
 		}
 
-		const responsePrice: any = {
+		let responsePrice: any = {
 			unit_amount: Number((Number(price) * 100).toFixed(2)),
 			currency: "usd",
 			interval: "month",
@@ -72,6 +72,8 @@ const useHome = () => {
 		} else if (Number(months) === 12) {
 			responsePrice.interval = "year"
 		}
+
+		console.log(responsePrice, months)
 
 		try {
 			const [customerResponse, priceResponse] = await Promise.all([
