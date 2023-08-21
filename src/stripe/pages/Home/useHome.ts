@@ -67,7 +67,8 @@ const useHome = () => {
 			productId: productId,
 		}
 
-		if (Number(months) === 6) {
+		if (Number(months) === 3) {
+			// todo change 3 months to 6
 			responsePrice.interval_count = 6
 		} else if (Number(months) === 12) {
 			responsePrice.interval = "year"
