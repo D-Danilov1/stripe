@@ -38,6 +38,7 @@ const Success = () => {
 				!subscriptionId
 			) {
 				return console.log("invalid keys")
+			} else {
 			}
 			try {
 				const { paymentIntent } = await stripe.retrievePaymentIntent(

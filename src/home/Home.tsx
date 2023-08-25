@@ -7,12 +7,12 @@ import { useRouter } from "next/router"
 import Cookies from "js-cookie"
 import Arrow from "../assets/Arrow.svg"
 
-const price12R = "8490"
-const price3R = "4290"
-const priceR = "1890"
-const price12 = "89.99"
-const price3 = "44.99"
-const price = "19.99"
+const price12R = "3990"
+const price3R = "2990"
+const priceR = "599"
+const price12 = "44.90"
+const price3 = "33.90"
+const price = "6.99"
 
 const Home = () => {
 	const { locale, push } = useRouter()
@@ -131,8 +131,8 @@ const Home = () => {
 								<div>
 									<p className={styles.box__title}>{t("discount 75%")}</p>
 									<p className={styles.box__subtitle}>
-										<span>{t("$359.99")}</span>
-										{t("$89.99")}
+										<span>{t("$360")}</span>
+										{t("$44.90")}
 									</p>
 								</div>
 							</div>
@@ -147,8 +147,8 @@ const Home = () => {
 								<div>
 									<p className={styles.box__title}>{t("discount 33%")}</p>
 									<p className={styles.box__subtitle}>
-										<span>{t("$69.99")}</span>
-										{t("$44.99")}
+										<span>{t("$49")}</span>
+										{t("$33.90")}
 									</p>
 								</div>
 							</div>
@@ -161,7 +161,7 @@ const Home = () => {
 									<p className={styles.box__subtitle}>{t("1 month")}</p>
 								</div>
 								<div>
-									<p className={styles.box__subtitle}>{t("$19.99")}</p>
+									<p className={styles.box__subtitle}>{t("$6.90")}</p>
 								</div>
 							</div>
 						</div>
