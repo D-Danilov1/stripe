@@ -54,27 +54,20 @@ const useHome = () => {
 		setDefaultForm()
 
 		const price = await Cookies.get("amount")
-		const months = await Cookies.get("period")
+		const period = await Cookies.get("period")
 
-		if (price || months) {
+		if (price || period) {
 			console.log("Error")
 		}
 
 		let responsePrice: any = {
 			unit_amount: Number((Number(price) * 100).toFixed(2)),
 			currency: "usd",
-			interval: "month",
+			interval: Number(period),
 			productId: productId,
 		}
 
-		if (Number(months) === 3) {
-			// todo change 3 months to 6
-			responsePrice.interval_count = 6
-		} else if (Number(months) === 12) {
-			responsePrice.interval = "year"
-		}
-
-		console.log(responsePrice, months)
+		// console.log(responsePrice, period)
 
 		try {
 			const [customerResponse, priceResponse] = await Promise.all([
@@ -99,7 +92,7 @@ const useHome = () => {
 					subscribeResponse.clientSecret
 				}&subscriptionId=${
 					subscribeResponse.subscriptionId
-				}&email=${email}&period=${months}&amount=${
+				}&email=${email}&period=${period}&amount=${
 					Number(price) * 100
 				}`
 			)

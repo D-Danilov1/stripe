@@ -8,10 +8,10 @@ import Cookies from "js-cookie"
 import Arrow from "../assets/Arrow.svg"
 
 const price12R = "3990"
-const price3R = "2990"
+const price6R = "2990"
 const priceR = "599"
 const price12 = "44.90"
-const price3 = "33.90"
+const price6 = "33.90"
 const price = "6.99"
 
 const Home = () => {
@@ -23,8 +23,8 @@ const Home = () => {
 			if (amount === price12) {
 				await Cookies.set("amount", price12R)
 			}
-			if (amount === price3) {
-				await Cookies.set("amount", price3R)
+			if (amount === price6) {
+				await Cookies.set("amount", price6R)
 			}
 			if (amount === price) {
 				await Cookies.set("amount", priceR)
@@ -39,12 +39,15 @@ const Home = () => {
 			if (amount == price12) {
 				await Cookies.set("amount", price12)
 			}
-			if (amount == price3) {
-				await Cookies.set("amount", price3)
+			if (amount == price6) {
+				await Cookies.set("amount", price6)
 			}
 			if (amount == price) {
 				await Cookies.set("amount", price)
 			}
+
+			await Cookies.set("period", period)
+
 			return await push("/en/stripe")
 		}
 	}
@@ -61,8 +64,8 @@ const Home = () => {
 		if (amount === price12) {
 			await Cookies.set("amount", price12R)
 		}
-		if (amount === price3) {
-			await Cookies.set("amount", price3R)
+		if (amount === price6) {
+			await Cookies.set("amount", price6R)
 		}
 		if (amount === price) {
 			await Cookies.set("amount", priceR)
@@ -76,8 +79,8 @@ const Home = () => {
 		if (amount === price12R) {
 			await Cookies.set("amount", price12)
 		}
-		if (amount === price3R) {
-			await Cookies.set("amount", price3)
+		if (amount === price6R) {
+			await Cookies.set("amount", price6)
 		}
 		if (amount === priceR) {
 			await Cookies.set("amount", price)
@@ -138,7 +141,7 @@ const Home = () => {
 							</div>
 							<div
 								className={styles.box}
-								onClick={() => handlePayment(price3, "3")}
+								onClick={() => handlePayment(price6, "6")}
 							>
 								<div>
 									<p className={styles.box__title}>{t("Subscription")}</p>

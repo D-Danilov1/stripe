@@ -50,8 +50,8 @@ const Subscribe = (): JSX.Element => {
 		}
 
 		const stripe: Stripe | null | any = await stripePromise
-		// @ts-ignore
-		if (!stripe) return null
+
+		if (!stripe) return
 		await Cookies.set('clientSecret', String(query.clientSecret))
 		await Cookies.set('subscriptionId', String(query.subscriptionId))
 		await Cookies.set('email', String(query.email))
