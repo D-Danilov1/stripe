@@ -7,12 +7,12 @@ import { useRouter } from "next/router"
 import Cookies from "js-cookie"
 import Arrow from "../assets/Arrow.svg"
 
-const price12R = "7990"
-const price3R = "2490"
-const priceR = "990"
-const price12 = "89.99"
-const price3 = "24.99"
-const price = "9.99"
+const price12R = "3990"
+const price6R = "2990"
+const priceR = "599"
+const price12 = "44.90"
+const price6 = "33.90"
+const price = "6.99"
 
 const Home = () => {
 	const { locale, push } = useRouter()
@@ -23,8 +23,8 @@ const Home = () => {
 			if (amount === price12) {
 				await Cookies.set("amount", price12R)
 			}
-			if (amount === price3) {
-				await Cookies.set("amount", price3R)
+			if (amount === price6) {
+				await Cookies.set("amount", price6R)
 			}
 			if (amount === price) {
 				await Cookies.set("amount", priceR)
@@ -39,8 +39,8 @@ const Home = () => {
 			if (amount == price12) {
 				await Cookies.set("amount", price12)
 			}
-			if (amount == price3) {
-				await Cookies.set("amount", price3)
+			if (amount == price6) {
+				await Cookies.set("amount", price6)
 			}
 			if (amount == price) {
 				await Cookies.set("amount", price)
@@ -64,8 +64,8 @@ const Home = () => {
 		if (amount === price12) {
 			await Cookies.set("amount", price12R)
 		}
-		if (amount === price3) {
-			await Cookies.set("amount", price3R)
+		if (amount === price6) {
+			await Cookies.set("amount", price6R)
 		}
 		if (amount === price) {
 			await Cookies.set("amount", priceR)
@@ -79,8 +79,8 @@ const Home = () => {
 		if (amount === price12R) {
 			await Cookies.set("amount", price12)
 		}
-		if (amount === price3R) {
-			await Cookies.set("amount", price3)
+		if (amount === price6R) {
+			await Cookies.set("amount", price6)
 		}
 		if (amount === priceR) {
 			await Cookies.set("amount", price)
@@ -132,26 +132,26 @@ const Home = () => {
 									<p className={styles.box__subtitle}>{t("12 months")}</p>
 								</div>
 								<div>
-									<p className={styles.box__title}>{locale == 'en' ? t("discount 25%") : t("discount 33%")}</p>
+									<p className={styles.box__title}>{t("discount 75%")}</p>
 									<p className={styles.box__subtitle}>
-										<span>{t("12 months price discount")}</span>
-										{t("12 months price")}
+										<span>{t("$360")}</span>
+										{t("$44.90")}
 									</p>
 								</div>
 							</div>
 							<div
 								className={styles.box}
-								onClick={() => handlePayment(price3, "3")}
+								onClick={() => handlePayment(price6, "6")}
 							>
 								<div>
 									<p className={styles.box__title}>{t("Subscription")}</p>
-									<p className={styles.box__subtitle}>{t("3 months")}</p>
+									<p className={styles.box__subtitle}>{t("6 months")}</p>
 								</div>
 								<div>
-									<p className={styles.box__title}>{t("discount 17%")}</p>
+									<p className={styles.box__title}>{t("discount 33%")}</p>
 									<p className={styles.box__subtitle}>
-										<span>{t("3 months price discount")}</span>
-										{t("3 months price")}
+										<span>{t("$49")}</span>
+										{t("$33.90")}
 									</p>
 								</div>
 							</div>
@@ -164,7 +164,7 @@ const Home = () => {
 									<p className={styles.box__subtitle}>{t("1 month")}</p>
 								</div>
 								<div>
-									<p className={styles.box__subtitle}>{t("1 month price")}</p>
+									<p className={styles.box__subtitle}>{t("$6.90")}</p>
 								</div>
 							</div>
 						</div>
