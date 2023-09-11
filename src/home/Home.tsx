@@ -132,9 +132,9 @@ const Home = () => {
 									<p className={styles.box__subtitle}>{t("12 months")}</p>
 								</div>
 								<div>
-									<p className={styles.box__title}>{t("discount 75%")}</p>
+									<p className={styles.box__title}>{t("discount 54%")}</p>
 									<p className={styles.box__subtitle}>
-										<span>{t("$360")}</span>
+										<span>{t("$82.20")}</span>
 										{t("$44.90")}
 									</p>
 								</div>
