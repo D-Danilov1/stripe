@@ -19,21 +19,33 @@ const Home = () => {
 	const [isShowPayments, setShowPayments] = useState(false)
 
 	const handlePayment = async (amount: string, period: string) => {
-		if (amount === price12) {
-			await Cookies.set("amount", price12R)
-		}
-		if (amount === price3) {
-			await Cookies.set("amount", price3R)
-		}
-		if (amount === price) {
-			await Cookies.set("amount", priceR)
-		}
-
-		await Cookies.set("period", period)
-
 		if (locale == "ru") {
+			if (amount === price12) {
+				await Cookies.set("amount", price12R)
+			}
+			if (amount === price3) {
+				await Cookies.set("amount", price3R)
+			}
+			if (amount === price) {
+				await Cookies.set("amount", priceR)
+			}
+	
+			await Cookies.set("period", period)
+
 			setShowPayments(true)
 		} else {
+			if (amount === price12) {
+				await Cookies.set("amount", price12)
+			}
+			if (amount === price3) {
+				await Cookies.set("amount", price3)
+			}
+			if (amount === price) {
+				await Cookies.set("amount", price)
+			}
+	
+			await Cookies.set("period", period)
+
 			return await push("/en/stripe")
 		}
 	}
