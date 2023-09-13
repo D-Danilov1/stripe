@@ -7,47 +7,33 @@ import { useRouter } from "next/router"
 import Cookies from "js-cookie"
 import Arrow from "../assets/Arrow.svg"
 
-const price12R = "3990"
-const price6R = "2990"
+const price12R = "4490"
+const price3R = "1590"
 const priceR = "599"
 const price12 = "44.90"
-const price6 = "33.90"
-const price = "6.99"
+const price3 = "14.90"
+const price = "6.90"
 
 const Home = () => {
 	const { locale, push } = useRouter()
 	const [isShowPayments, setShowPayments] = useState(false)
 
 	const handlePayment = async (amount: string, period: string) => {
-		if (locale == "ru") {
-			if (amount === price12) {
-				await Cookies.set("amount", price12R)
-			}
-			if (amount === price6) {
-				await Cookies.set("amount", price6R)
-			}
-			if (amount === price) {
-				await Cookies.set("amount", priceR)
-			}
-
-			await Cookies.set("period", period)
-
-			setShowPayments(true)
+		if (amount === price12) {
+			await Cookies.set("amount", price12R)
+		}
+		if (amount === price3) {
+			await Cookies.set("amount", price3R)
+		}
+		if (amount === price) {
+			await Cookies.set("amount", priceR)
 		}
 
-		if (locale !== "ru") {
-			if (amount == price12) {
-				await Cookies.set("amount", price12)
-			}
-			if (amount == price6) {
-				await Cookies.set("amount", price6)
-			}
-			if (amount == price) {
-				await Cookies.set("amount", price)
-			}
+		await Cookies.set("period", period)
 
-			await Cookies.set("period", period)
-
+		if (locale == "ru") {
+			setShowPayments(true)
+		} else {
 			return await push("/en/stripe")
 		}
 	}
@@ -64,8 +50,8 @@ const Home = () => {
 		if (amount === price12) {
 			await Cookies.set("amount", price12R)
 		}
-		if (amount === price6) {
-			await Cookies.set("amount", price6R)
+		if (amount === price3) {
+			await Cookies.set("amount", price3R)
 		}
 		if (amount === price) {
 			await Cookies.set("amount", priceR)
@@ -79,8 +65,8 @@ const Home = () => {
 		if (amount === price12R) {
 			await Cookies.set("amount", price12)
 		}
-		if (amount === price6R) {
-			await Cookies.set("amount", price6)
+		if (amount === price3R) {
+			await Cookies.set("amount", price3)
 		}
 		if (amount === priceR) {
 			await Cookies.set("amount", price)
@@ -134,24 +120,24 @@ const Home = () => {
 								<div>
 									<p className={styles.box__title}>{t("discount 54%")}</p>
 									<p className={styles.box__subtitle}>
-										<span>{t("$82.20")}</span>
-										{t("$44.90")}
+										<span>{t("12 months price discount")}</span>
+										{t("12 months price")}
 									</p>
 								</div>
 							</div>
 							<div
 								className={styles.box}
-								onClick={() => handlePayment(price6, "6")}
+								onClick={() => handlePayment(price3, "3")}
 							>
 								<div>
 									<p className={styles.box__title}>{t("Subscription")}</p>
-									<p className={styles.box__subtitle}>{t("6 months")}</p>
+									<p className={styles.box__subtitle}>{t("3 months")}</p>
 								</div>
 								<div>
 									<p className={styles.box__title}>{t("discount 33%")}</p>
 									<p className={styles.box__subtitle}>
-										<span>{t("$49")}</span>
-										{t("$33.90")}
+										<span>{t("3 months price discount")}</span>
+										{t("3 months price")}
 									</p>
 								</div>
 							</div>
@@ -164,7 +150,7 @@ const Home = () => {
 									<p className={styles.box__subtitle}>{t("1 month")}</p>
 								</div>
 								<div>
-									<p className={styles.box__subtitle}>{t("$6.90")}</p>
+									<p className={styles.box__subtitle}>{t("1 month price")}</p>
 								</div>
 							</div>
 						</div>
